@@ -1,97 +1,77 @@
 # Model configurations for evaluation
 # Add models you want to test on Firmus H200 infrastructure
+# CUTTING-EDGE MODELS ONLY - December 2024
 
 models:
-  # Large Language Models
-  llama3_8b:
-    name: "Meta-Llama-3-8B"
-    model_path: "meta-llama/Meta-Llama-3-8B"
-    type: "causal_lm"
-    hardware_requirements:
-      min_vram_gb: 16
-      recommended_vram_gb: 24
-    test_parameters:
-      batch_sizes: [1, 4, 8, 16]
-      sequence_lengths: [512, 1024, 2048]
-
-  llama3_70b:
-    name: "Meta-Llama-3-70B"
-    model_path: "meta-llama/Meta-Llama-3-70B"
+  # Meta Llama 3.3 (December 2024 - Latest)
+  llama3_3_70b:
+    name: "Llama-3.3-70B-Instruct"
+    model_path: "meta-llama/Llama-3.3-70B-Instruct"
     type: "causal_lm"
     hardware_requirements:
       min_vram_gb: 140
       recommended_vram_gb: 160
     test_parameters:
-      batch_sizes: [1, 2, 4]
-      sequence_lengths: [512, 1024, 2048]
+      batch_sizes: [1, 2, 4, 8]
+      sequence_lengths: [512, 1024, 2048, 4096, 8192]
 
-  mistral_7b:
-    name: "Mistral-7B-v0.1"
-    model_path: "mistralai/Mistral-7B-v0.1"
+  # Qwen 2.5 Series (November 2024 - Latest from Alibaba)
+  qwen2_5_7b:
+    name: "Qwen2.5-7B-Instruct"
+    model_path: "Qwen/Qwen2.5-7B-Instruct"
     type: "causal_lm"
     hardware_requirements:
       min_vram_gb: 14
       recommended_vram_gb: 20
-    test_parameters:
-      batch_sizes: [1, 4, 8, 16]
-      sequence_lengths: [512, 1024, 2048]
-
-        # OpenAI OSS Models
-  gpt2:
-    name: "GPT-2"
-    model_path: "openai-community/gpt2"
-    type: "causal_lm"
-    hardware_requirements:
-      min_vram_gb: 2
-      recommended_vram_gb: 4
     test_parameters:
       batch_sizes: [1, 4, 8, 16, 32]
-      sequence_lengths: [512, 1024]
+      sequence_lengths: [512, 1024, 2048, 4096, 8192, 16384]
 
-  # Qwen Models
-  qwen_7b:
-    name: "Qwen-7B"
-    model_path: "Qwen/Qwen-7B"
-    type: "causal_lm"
-    hardware_requirements:
-      min_vram_gb: 14
-      recommended_vram_gb: 20
-    test_parameters:
-      batch_sizes: [1, 4, 8, 16]
-      sequence_lengths: [512, 1024, 2048, 4096]
-
-  qwen_14b:
-    name: "Qwen-14B"
-    model_path: "Qwen/Qwen-14B"
+  qwen2_5_14b:
+    name: "Qwen2.5-14B-Instruct"
+    model_path: "Qwen/Qwen2.5-14B-Instruct"
     type: "causal_lm"
     hardware_requirements:
       min_vram_gb: 28
       recommended_vram_gb: 36
     test_parameters:
-      batch_sizes: [1, 4, 8]
-      sequence_lengths: [512, 1024, 2048, 4096]
+      batch_sizes: [1, 4, 8, 16]
+      sequence_lengths: [512, 1024, 2048, 4096, 8192, 16384]
 
-  qwen_72b:
-    name: "Qwen-72B"
-    model_path: "Qwen/Qwen-72B"
+  qwen2_5_72b:
+    name: "Qwen2.5-72B-Instruct"
+    model_path: "Qwen/Qwen2.5-72B-Instruct"
     type: "causal_lm"
     hardware_requirements:
       min_vram_gb: 144
       recommended_vram_gb: 160
     test_parameters:
       batch_sizes: [1, 2, 4]
-      sequence_lengths: [512, 1024, 2048, 4096]
+      sequence_lengths: [512, 1024, 2048, 4096, 8192, 16384]
 
-  qwen2_5_7b:
-    name: "Qwen2.5-7B"
-    model_path: "Qwen/Qwen2.5-7B"
+  # DeepSeek V3 (December 2024 - Cutting Edge MoE)
+  deepseek_v3:
+    name: "DeepSeek-V3"
+    model_path: "deepseek-ai/DeepSeek-V3"
     type: "causal_lm"
     hardware_requirements:
-      min_vram_gb: 14
-      recommended_vram_gb: 20
+      min_vram_gb: 160
+      recommended_vram_gb: 200
     test_parameters:
-      batch_sizes: [1, 4, 8, 16]
+      batch_sizes: [1, 2, 4]
       sequence_lengths: [512, 1024, 2048, 4096, 8192]
+
+  # Mistral Large 2 (July 2024 - Latest Mistral)
+  mistral_large_2:
+    name: "Mistral-Large-Instruct-2407"
+    model_path: "mistralai/Mistral-Large-Instruct-2407"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 140
+      recommended_vram_gb: 160
+    test_parameters:
+      batch_sizes: [1, 2, 4]
+      sequence_lengths: [512, 1024, 2048, 4096, 8192, 16384]
 
 # Evaluation datasets
 datasets:
