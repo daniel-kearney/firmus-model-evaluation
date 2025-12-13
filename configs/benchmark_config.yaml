@@ -1,0 +1,86 @@
+# Benchmark configuration for model evaluation
+# Customize these settings for your testing needs
+
+# Hardware Configuration
+hardware:
+  gpu:
+    model: "NVIDIA H200"
+    memory_gb: 141
+    count: 8  # Number of GPUs in cluster
+  system:
+    cpu_cores: 128
+    ram_gb: 2048
+
+# Performance Testing
+performance:
+  warmup_iterations: 10
+  test_iterations: 100
+  batch_sizes: [1, 4, 8, 16, 32]
+  sequence_lengths: [128, 256, 512, 1024, 2048, 4096]
+  
+  metrics:
+    - tokens_per_second
+    - latency_p50_ms
+    - latency_p95_ms
+    - latency_p99_ms
+    - throughput_requests_per_second
+    - memory_usage_gb
+
+# Quality Evaluation
+quality:
+  benchmarks:
+    mmlu:
+      enabled: true
+      subjects: "all"  # or specify list: ["math", "physics", ...]
+      shots: 5
+    
+    gsm8k:
+      enabled: true
+      shots: 8
+    
+    humaneval:
+      enabled: true
+      temperature: 0.2
+      top_p: 0.95
+      samples_per_task: 10
+  
+  custom_prompts:
+    enabled: true
+    prompt_file: "prompts/evaluation_prompts.json"
+
+# Infrastructure Metrics
+infrastructure:
+  monitoring:
+    interval_seconds: 10
+    
+  metrics:
+    - gpu_utilization
+    - gpu_memory_used
+    - gpu_temperature
+    - power_draw_watts
+    - pcie_bandwidth_gbps
+    - nvlink_bandwidth_gbps
+    - cpu_utilization
+    - system_memory_used
+
+# Cost Analysis
+costing:
+  h200_hourly_rate: 5.00  # USD per GPU per hour
+  compute_hours_target: 100
+  
+  metrics:
+    - cost_per_1000_tokens
+    - cost_per_request
+    - total_compute_cost
+
+# Output Configuration
+output:
+  results_dir: "results"
+  save_format: ["json", "csv", "html"]
+  generate_plots: true
+  plot_format: "png"
+  
+  reports:
+    summary: true
+    detailed: true
+    comparison: true
