@@ -36,6 +36,63 @@ models:
       batch_sizes: [1, 4, 8, 16]
       sequence_lengths: [512, 1024, 2048]
 
+        # OpenAI OSS Models
+  gpt2:
+    name: "GPT-2"
+    model_path: "openai-community/gpt2"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 2
+      recommended_vram_gb: 4
+    test_parameters:
+      batch_sizes: [1, 4, 8, 16, 32]
+      sequence_lengths: [512, 1024]
+
+  # Qwen Models
+  qwen_7b:
+    name: "Qwen-7B"
+    model_path: "Qwen/Qwen-7B"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 14
+      recommended_vram_gb: 20
+    test_parameters:
+      batch_sizes: [1, 4, 8, 16]
+      sequence_lengths: [512, 1024, 2048, 4096]
+
+  qwen_14b:
+    name: "Qwen-14B"
+    model_path: "Qwen/Qwen-14B"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 28
+      recommended_vram_gb: 36
+    test_parameters:
+      batch_sizes: [1, 4, 8]
+      sequence_lengths: [512, 1024, 2048, 4096]
+
+  qwen_72b:
+    name: "Qwen-72B"
+    model_path: "Qwen/Qwen-72B"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 144
+      recommended_vram_gb: 160
+    test_parameters:
+      batch_sizes: [1, 2, 4]
+      sequence_lengths: [512, 1024, 2048, 4096]
+
+  qwen2_5_7b:
+    name: "Qwen2.5-7B"
+    model_path: "Qwen/Qwen2.5-7B"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 14
+      recommended_vram_gb: 20
+    test_parameters:
+      batch_sizes: [1, 4, 8, 16]
+      sequence_lengths: [512, 1024, 2048, 4096, 8192]
+
 # Evaluation datasets
 datasets:
   quality:
