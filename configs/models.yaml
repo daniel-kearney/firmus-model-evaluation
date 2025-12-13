@@ -1,0 +1,55 @@
+# Model configurations for evaluation
+# Add models you want to test on Firmus H200 infrastructure
+
+models:
+  # Large Language Models
+  llama3_8b:
+    name: "Meta-Llama-3-8B"
+    model_path: "meta-llama/Meta-Llama-3-8B"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 16
+      recommended_vram_gb: 24
+    test_parameters:
+      batch_sizes: [1, 4, 8, 16]
+      sequence_lengths: [512, 1024, 2048]
+
+  llama3_70b:
+    name: "Meta-Llama-3-70B"
+    model_path: "meta-llama/Meta-Llama-3-70B"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 140
+      recommended_vram_gb: 160
+    test_parameters:
+      batch_sizes: [1, 2, 4]
+      sequence_lengths: [512, 1024, 2048]
+
+  mistral_7b:
+    name: "Mistral-7B-v0.1"
+    model_path: "mistralai/Mistral-7B-v0.1"
+    type: "causal_lm"
+    hardware_requirements:
+      min_vram_gb: 14
+      recommended_vram_gb: 20
+    test_parameters:
+      batch_sizes: [1, 4, 8, 16]
+      sequence_lengths: [512, 1024, 2048]
+
+# Evaluation datasets
+datasets:
+  quality:
+    - name: "MMLU"
+      path: "cais/mmlu"
+      metrics: ["accuracy"]
+    - name: "GSM8K"
+      path: "gsm8k"
+      metrics: ["accuracy"]
+    - name: "HumanEval"
+      path: "openai_humaneval"
+      metrics: ["pass@1", "pass@10"]
+
+  performance:
+    - name: "Custom Benchmark"
+      description: "Token generation speed tests"
+      metrics: ["tokens_per_second", "latency_ms"]
