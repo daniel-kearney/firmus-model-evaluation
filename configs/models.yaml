@@ -105,16 +105,16 @@ datasets:
     - name: "MMLU"
       path: "cais/mmlu"
       metrics: ["accuracy"]
-  - name: "GSM8K"
+    - name: "GSM8K"
       path: "gsm8k"
       metrics: ["accuracy"]
-  - name: "ARC"
+    - name: "ARC"
       path: "arc"
       metrics: ["accuracy"]
-  - name: "WinoGrande"
+    - name: "WinoGrande"
       path: "winogrande"
       metrics: ["accuracy"]
-  - name: "HellaSwag"
+    - name: "HellaSwag"
       path: "Rowan/hellaswag"
       metrics: ["pass@1", "pass@10"]
 
