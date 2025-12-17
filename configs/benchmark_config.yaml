@@ -1,5 +1,5 @@
 # Benchmark configuration for model evaluation
-# Customize these settings for your testing needs
+# Customise your settings for testing needs
 
 # Hardware Configuration
 hardware:
@@ -65,7 +65,7 @@ infrastructure:
 
 # Cost Analysis
 costing:
-  h200_hourly_rate: 5.00  # USD per GPU per hour
+  h200_hourly_rate: 2.5  # USD per GPU per hour based on SemiAnalysis pricing for NeoClouds
   compute_hours_target: 100
   
   metrics:
